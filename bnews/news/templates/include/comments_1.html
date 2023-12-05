@@ -1,0 +1,39 @@
+<div>
+    <br>
+ {% for reviews in news.reviews_set.all %}
+    <br>
+    {{ reviews.name }}
+    <br>
+    {{ reviews.text }}
+    <br>
+    <a href="#formReview" onclick="addReview('{{ reviews.name}}', '{{ reviews.id }}')">Ответить</a>
+    <br>
+  {% endfor %}
+
+</div>
+
+<br>
+<br>
+
+
+<form action="{% url 'add_review' news_id %}" method="post" id="formReview">
+    <label>Vash comment *</label>
+    {% csrf_token %}
+    <input type="hidden" name="parent" value="" id="contactparent">
+    <textarea name="text" id="contactcomment"></textarea>
+    <br>
+    <label>Name *</label>
+    <input type="text" name="name">
+    <br>
+    <label>Email *</label>
+    <input type="email" name="email">
+    <br>
+    <button type="submit">Send</button>
+</form>
+
+<script>
+    function addReview(name, id) {
+        document.getElementById("contactparent").value = id;
+        document.getElementById("contactcomment").innerText = `${name}, `
+    }
+</script>

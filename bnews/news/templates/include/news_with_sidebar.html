@@ -1,0 +1,221 @@
+{% load static %}
+<div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-title">
+                                <h4 class="m-0 text-uppercase font-weight-bold">Лента новостей</h4>
+                                <a class="text-secondary font-weight-medium text-decoration-none" href="">АРХИВ</a>
+                            </div>
+                        </div>
+                           {% for news in news_list %}
+                        {% if forloop.counter < 10  %}
+                          {% if forloop.counter > 7 %}
+                        <div class="col-lg-6">
+                              <div class="position-relative mb-3">
+                                <img class="img-fluid w-100" src="{{ news.img_middle.url }}" style="object-fit: cover;">
+                                <div class="bg-white border border-top-0 p-4">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                            href="catigory/{{ news.url_cat }}">{{ news.catigory }}</a>
+                                        <a class="text-body" href=""><small>{{ news.published }}</small></a>
+                                    </div>
+                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{% url 'get_detail' news.url %}">{{ news.title|truncatewords:6 }}</a>
+                                    <p class="m-0">{{ news.description|truncatewords:11 }}</p>
+                                </div>
+                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle mr-2" src="{{ news.img_small.url }}" width="25" height="25" alt="">
+                                        <small>John Doe</small>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
+                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+                       <div class="col-lg-12 mb-3">
+                            <a href=""><img class="img-fluid w-100" src="{% static 'img/ads-728x90.png' %}" alt=""></a>
+                        </div>
+                        {% for news in news_list %}
+                            {% if forloop.counter < 12  %}
+                                 {% if forloop.counter > 9 %}
+                        <div class="col-lg-6">
+                            <div class="position-relative mb-3">
+                                <img class="img-fluid w-100" src="{{ news.img_middle.url }}" style="object-fit: cover;">
+                                <div class="bg-white border border-top-0 p-4">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                            href="catigory/{{ news.url_cat }}">{{ news.catigory }}</a>
+                                        <a class="text-body" href=""><small>{{ news.published }}</small></a>
+                                    </div>
+                                    <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="{% url 'get_detail' news.url %}">{{ news.title|truncatewords:6 }}</a>
+                                </div>
+                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle mr-2" src="{{ news.img_small.url }}" width="25" height="25" alt="">
+                                        <small>John Doe</small>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
+                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                 {% endif %}
+                             {% endif %}
+                        {% endfor %}
+
+                        <div class="col-lg-6">
+                               {% for news in news_list %}
+                            {% if forloop.counter < 14  %}
+                                 {% if forloop.counter > 11 %}
+                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                <img class="img-fluid" src="{{ news.img_small.url }}" alt="">
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="catigory/{{ news.url_cat }}">{{ news.catigory}}</a>
+                                        <br>
+                                        <a class="text-body" href=""><small>{{ news.published }}</small></a>
+                                    </div>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{% url 'get_detail' news.url %}">{{ news.title|truncatechars:40 }}</a>
+                                </div>
+                            </div>
+                             {% endif %}
+                             {% endif %}
+                        {% endfor %}
+                        </div>
+
+                        <div class="col-lg-6">
+                             {% for news in news_list %}
+                                {% if forloop.counter < 16  %}
+                                 {% if forloop.counter > 13 %}
+                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                <img class="img-fluid" src="{{ news.img_small.url }}" alt="">
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="catigory/{{ news.url_cat }}">{{ news.catigory }}</a>
+                                        <br>
+                                        <a class="text-body" href=""><small>{{ news.published }}</small></a>
+                                    </div>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{% url 'get_detail' news.url %}">{{ news.title|truncatechars:40 }}</a>
+                                </div>
+                            </div>
+
+                              {% endif %}
+                             {% endif %}
+                        {% endfor %}
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <a href=""><img class="img-fluid w-100" src="{% static 'img/ads-728x90.png' %}" alt=""></a>
+                        </div>
+
+                         {% for news in news_list %}
+                                {% if forloop.counter < 17  %}
+                                 {% if forloop.counter > 15 %}
+                        <div class="col-lg-12">
+
+                            <div class="row news-lg mx-0 mb-3">
+                                <div class="col-md-6 h-100 px-0">
+                                    <img class="img-fluid h-100" src="{{ news.img_middle.url }}" style="object-fit: cover;">
+                                </div>
+                                <div class="col-md-6 d-flex flex-column border bg-white h-100 px-0">
+                                    <div class="mt-auto p-4">
+                                        <div class="mb-2">
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                                href="catigory/{{ news.url_cat }}">{{ news.catigory }}</a>
+                                            <a class="text-body" href=""><small>{{ news.published }}</small></a>
+                                        </div>
+                                        <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{% url 'get_detail' news.url %}">{{ news.title|truncatechars:40 }}</a>
+                                        <p class="m-0">{{ news.description|truncatechars:100}}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between bg-white border-top mt-auto p-4">
+                                        <div class="d-flex align-items-center">
+                                            <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
+                                            <small>John Doe</small>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
+                                            <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                {% endif %}
+                             {% endif %}
+                        {% endfor %}
+
+                        <div class="col-lg-6">
+                             {% for news in news_list %}
+                                {% if forloop.counter < 19  %}
+                                 {% if forloop.counter > 16 %}
+                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                <img class="img-fluid" src="{{ news.img_small.url }}" alt="">
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="catigory/{{ news.url_cat }}">{{ news.catigory }}</a>
+                                        <br>
+                                        <a class="text-body" href=""><small>{{ news.published }}</small></a>
+                                    </div>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{% url 'get_detail' news.url %}">{{ news.title|truncatechars:40 }}</a>
+                                </div>
+                            </div>
+                                 {% endif %}
+                             {% endif %}
+                        {% endfor %}
+                        </div>
+                        <div class="col-lg-6">
+                             {% for news in news_list %}
+                                {% if forloop.counter < 21  %}
+                                 {% if forloop.counter > 18 %}
+                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                <img class="img-fluid" src="{{ news.img_small.url }}" alt="">
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="catigory/{{ news.url_cat }}">{{ news.catigory }}</a>
+                                        <br>
+                                        <a class="text-body" href=""><small>{{ news.published }}</small></a>
+                                    </div>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{% url 'get_detail' news.url %}">{{ news.title|truncatechars:40 }}</a>
+                                </div>
+                            </div>
+                                {% endif %}
+                             {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Social Follow Start -->
+
+                    <!-- Social Follow End -->
+
+                    <!-- Ads Start -->
+                    {% include 'include/ads.html' %}
+                    <!-- Ads End -->
+
+                    <!-- Business News Start -->
+                    {% include 'include/business_news.html' %}
+                    <!-- Business News End -->
+
+                    <!-- Newsletter Start -->
+                   {% include 'include/newsletter.html' %}
+                    <!-- Newsletter End -->
+
+                    <!-- Tags Start -->
+                   {% include 'include/tags.html' %}
+                    <!-- Tags End -->
+                </div>
+            </div>
+        </div>
+    </div>
