@@ -15,11 +15,11 @@ class News(models.Model):
     url_cat = models.SlugField(max_length=30)
 
 
-
-
-
     def __str__(self):
         return self.title
+
+    def get_review(self):
+        return self.reviews_set.filter(parent__isnull=True)
 
     def get_single(self):
         return reverse("get_detail", kwargs={"slug": self.url})
