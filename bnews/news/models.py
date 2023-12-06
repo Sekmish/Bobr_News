@@ -21,8 +21,8 @@ class News(models.Model):
     def get_review(self):
         return self.reviews_set.filter(parent__isnull=True)
 
-    def get_single(self):
-        return reverse("get_detail", kwargs={"slug": self.url})
+    # def get_single(self):
+    #     return reverse("get_detail", kwargs={"slug": self.url})
 
     class Meta:
         verbose_name = "Новость"
@@ -35,6 +35,7 @@ class Catigories(models.Model):
 
     def __str__(self):
         return self.name
+
 
     def get_catt(self):
         return reverse("by_rubric", kwargs={"slug": self.url_cat})

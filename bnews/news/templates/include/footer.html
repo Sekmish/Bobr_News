@@ -23,7 +23,11 @@
                           {% if forloop.counter < 4 %}
                 <div class="mb-3">
                     <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="catigory/{{ news.url_cat }}">{{ news.catigory }}</a>
+                         {% for catigory in catigories %}
+
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ catigory.get_catt }}">{{ catigory.name }}</a>
+
+                    {% endfor %}
                         <a class="text-body" href=""><small>{{ news.published }}</small></a>
                     </div>
                     <a class="small text-body text-uppercase font-weight-medium" href="">{{ news.title|truncatewords:7 }}</a>
