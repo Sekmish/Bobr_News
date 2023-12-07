@@ -21,8 +21,8 @@ class News(models.Model):
     def get_review(self):
         return self.reviews_set.filter(parent__isnull=True)
 
-    # def get_single(self):
-    #     return reverse("get_detail", kwargs={"slug": self.url})
+    def get_single(self):
+        return reverse("get_detail", kwargs={"slug": self.url})
 
     class Meta:
         verbose_name = "Новость"
@@ -32,6 +32,7 @@ class News(models.Model):
 class Catigories(models.Model):
     name = models.CharField(max_length=20, db_index=True, verbose_name="Название")
     url_cat = models.SlugField(max_length=30)
+
 
     def __str__(self):
         return self.name
@@ -54,6 +55,7 @@ class Reviews(models.Model):
         'self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True
     )
     news = models.ForeignKey(News, verbose_name="Новость", on_delete=models.CASCADE)
+    published = models.DateTimeField(auto_now=True, db_index=True)
 
     def __str__(self):
         return f"{self.name} - {self.news}"

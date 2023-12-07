@@ -8,7 +8,7 @@
                             <div class="media mb-4">
                                <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                 <div class="media-body">
-                                    <h6><a class="text-secondary font-weight-bold">{{ reviews.name }}</a> <small><i>01 Jan 2045</i></small></h6>
+                                    <h6><a class="text-secondary font-weight-bold">{{ reviews.name }}</a> <small><i>{{ reviews.published }}</i></small></h6>
                                     <p>{{ reviews.text }}</p>
                                     <a href="#formReview" onclick="addReview('{{ reviews.name}}', '{{ reviews.id }}')"><button class="btn btn-sm btn-outline-secondary">Ответить</button></a>
                                     {% for rew in reviews.reviews_set.all %}
@@ -16,7 +16,7 @@
                                         <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1"
                                             style="width: 45px;">
                                         <div class="media-body">
-                                            <h6><a class="text-secondary font-weight-bold">{{ rew.name }}</a> <small><i>01 Jan 2045</i></small></h6>
+                                            <h6><a class="text-secondary font-weight-bold">{{ rew.name }}</a> <small><i>{{ rew.published }}</i></small></h6>
                                             <p>{{ rew.text }}</p>
                                         </div>
                                     </div>
@@ -36,18 +36,23 @@
                         <div class="bg-white border border-top-0 p-4">
                             <form action="{% url 'add_review' news_id %}" method="post" id="formReview">
                                 {% csrf_token %}
+
                                 <input type="hidden" name="parent" value="" id="contactparent">
                                 <div class="form-row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="name">Имя *</label>
-                                            <input type="text" class="form-control" id="name" name="name">
+                                            <input type="text" placeholder="Введите имя" class="form-control" id="name" name="name" minlength="3" maxlength="20" required>
+                                            <div id="name-error" class="text-danger"></div>
+
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="email">Email *</label>
-                                            <input type="email" class="form-control" id="email" name="email">
+                                            <input type="email" placeholder="Ваш Email" class="form-control" id="email" name="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+                                            <div id="email-error" class="text-danger"></div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -55,13 +60,19 @@
 
                                 <div class="form-group">
                                     <label for="message">Комментарий *</label>
-                                    <textarea id="message" cols="30" rows="5" class="form-control" name="text"></textarea>
+                                    <textarea id="message" placeholder="Введите текст" cols="30" rows="5" class="form-control" name="text" minlength="1" maxlength="5000" required></textarea>
+                                    <div id="text-error" class="text-danger"></div>
                                 </div>
+
+
                                 <div class="form-group mb-0">
                                     <input type="submit" value="Оставить комментарий"
+
                                         class="btn btn-primary font-weight-semi-bold py-2 px-3">
                                 </div>
                             </form>
+
+
                         </div>
                     </div>
 <script>
