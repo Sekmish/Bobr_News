@@ -1,4 +1,7 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
 <head>
     <meta charset="utf-8">
     <title>{% block title%}ГЛАВНАЯ::Бобровский портал{% endblock %}</title>
@@ -23,3 +26,22 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
 </head>
+
+<body>
+    <!-- Topbar Start -->
+    {% include 'include/topbar.html' %}
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    {% include 'include/navbar.html' %}
+    <!-- Navbar End -->
+
+{% block content %}
+    {% endblock %}
+
+    <!-- Footer Start -->
+ {% include 'include/footer.html' %}
+</body>
+
+</html>

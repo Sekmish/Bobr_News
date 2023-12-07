@@ -1,20 +1,8 @@
+{% extends 'layout/basic.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-
-    {% include 'include/head.html' %}
-
-<body>
-    <!-- Topbar Start -->
-    {% include 'include/topbar.html' %}
-    <!-- Topbar End -->
 
 
-    <!-- Navbar Start -->
-    {% include 'include/navbar.html' %}
-    <!-- Navbar End -->
-
-
+{% block content %}
     <!-- Main News Slider Start -->
     {% include 'include/main_news.html' %}
     <!-- Main News Slider End -->
@@ -33,10 +21,4 @@
     <!-- News With Sidebar Start -->
     {% include 'include/news_with_sidebar.html' %}
     <!-- News With Sidebar End -->
-
-
-    <!-- Footer Start -->
- {% include 'include/footer.html' %}
-</body>
-
-</html>
+{% endblock %}

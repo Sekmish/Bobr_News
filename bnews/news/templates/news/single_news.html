@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="ru">
-
- {% include 'include/head.html' %}
-
-<body>
-    <!-- Topbar Start -->
-    {% include 'include/topbar.html' %}
-    <!-- Topbar End -->
-
-
-    <!-- Navbar Start -->
-   {% include 'include/navbar.html' %}
-    <!-- Navbar End -->
-
+{% extends 'layout/basic.html' %}
+{% block title %}{{ single_news.title }}{% endblock %}
+{% block content %}
 
     <!-- Breaking News Start -->
     <div class="container-fluid mt-5 mb-3 pt-3">
@@ -98,9 +85,4 @@
     </div>
     <!-- News With Sidebar End -->
 
-
-    <!-- Footer Start -->
-{% include 'include/footer.html' %}
-</body>
-
-</html>
+{% endblock %}
